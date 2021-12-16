@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace FunctionPlotter
 {
+    /// <summary>
+    /// utility class that contain helper functions
+    /// </summary>
     public static class utility
     {
        public static StreamWriter scanner_writer = new StreamWriter("Scanner.txt", false);

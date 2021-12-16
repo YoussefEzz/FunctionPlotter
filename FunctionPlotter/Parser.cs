@@ -6,17 +6,28 @@ using System.Threading.Tasks;
 
 namespace FunctionPlotter
 {
+    /// <summary>
+    /// class that parses the function string according to given grammar
+    /// </summary>
     public class Parser
     {
         Token m_token;
         Scanner m_scanner;
         int m_var;
 
+        /// <summary>
+        /// parser constructor
+        /// </summary>
+        /// <param name="scanner">scanner object to get the tokens</param>
         public Parser(Scanner scanner)
         {
             m_scanner = scanner;
         }
 
+        /// <summary>
+        /// function to obtain next token if the current token is the expected one otherwise error occurs
+        /// </summary>
+        /// <param name="expected">expected token</param>
         void match(TokenType expected)
         {
             if(m_token.tokenType.Equals(expected))
@@ -25,22 +36,50 @@ namespace FunctionPlotter
             }
             else
             {
-
+                error();
             }
         }
 
-        public int parse(int var)
+        /// <summary>
+        /// function to throw an exception if an error occurs in syntax
+        /// </summary>
+        void error()
         {
-            m_var = var;
+            string errormessage = "unexpected token : " + m_token.tokenString + ".";
+            Console.WriteLine(errormessage);
+            throw new Exception(errormessage);
+        }
+
+        /// <summary>
+        /// function to reset character position in scanner
+        /// </summary>
+        public void reset()
+        {
+            m_scanner.resetToken();
+        }
+
+        /// <summary>
+        /// main function that parses the function string and calculates its value according to input
+        /// </summary>
+        /// <param name="x">variable value</param>
+        /// <returns>int value representing net value of the function</returns>
+        public int parse(int x)
+        {
+            m_var = x;
             int result = 0;
             m_token = m_scanner.getToken();
             
             result = addsubexp();
-            m_scanner.resetToken();
+            reset();
 
             return result;
         }
 
+        /// <summary>
+        /// recursive function that represent addition and subtraction expressions according to rule
+        /// addsubexp -> addsubexp  addop muldivexp | muldivexp
+        /// </summary>
+        /// <returns>int value of the result of addsub expression</returns>
         int addsubexp()
         {
             int temp = muldivexp();
@@ -60,6 +99,11 @@ namespace FunctionPlotter
             return temp;
         }
 
+        /// <summary>
+        /// recursive function that represent multiplication and division expressions according to rule
+        /// muldivexp -> muldivexp mulop powerexp | powerexp
+        /// </summary>
+        /// <returns>int value of the result of muldiv expression</returns>
         int muldivexp()
         {
             int temp = powerexp();
@@ -79,6 +123,11 @@ namespace FunctionPlotter
             return temp;
         }
 
+        /// <summary>
+        /// recursive function that represent power expressions according to rule
+        /// powerexp -> exp powerop powerexp | exp
+        /// </summary>
+        /// <returns>int value of the result of power expression</returns>
         int powerexp()
         {
             int temp = exp();
@@ -91,6 +140,11 @@ namespace FunctionPlotter
             return temp;
         }
 
+        /// <summary>
+        /// normal expression representing identifier or number or addsub expression within parentheses according to rule
+        /// exp -> (addsubexp ) | identifier | number
+        /// </summary>
+        /// <returns>int value of the result of normal expression</returns>
         int exp()
         {
             int temp = 0;
@@ -112,7 +166,7 @@ namespace FunctionPlotter
             }
             else
             {
-
+                error();
             }
 
             return temp;

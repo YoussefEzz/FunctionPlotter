@@ -19,10 +19,20 @@ namespace FunctionPlotter
 
         private void Plotbutton_Click(object sender, EventArgs e)
         {
+            if(!Validation.IntegerValidator(mintextBox.Text))
+            {
+                MessageBox.Show("min value must be an integer");
+                return;
+            }
+            if(!Validation.IntegerValidator(maxtextBox.Text))
+            {
+                MessageBox.Show("max value must be an integer");
+                return;
+            }
+
             Scanner scanner = new Scanner(functiontextBox.Text);
             Parser parser = new Parser(scanner);
-
-            // Frist parameter is X-Axis and Second is Collection of Y- Axis
+            
 
             int min = int.Parse(mintextBox.Text);
             int max = int.Parse(maxtextBox.Text);
@@ -30,8 +40,19 @@ namespace FunctionPlotter
             plotchart.Series["Function Series"].Points.Clear();
             for (int x = min; x <= max; x++)
             {
-                int y = parser.parse(x);
-                plotchart.Series["Function Series"].Points.AddXY(x, y);
+                try
+                {
+                    int y = parser.parse(x);
+                    plotchart.Series["Function Series"].Points.AddXY(x, y);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    parser.reset();
+                    break;
+                }
+                
+                
             }
 
             utility.closeScannerfile();

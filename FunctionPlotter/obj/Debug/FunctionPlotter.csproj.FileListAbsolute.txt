@@ -1,0 +1,10 @@
+C:\Users\youssef\source\repos\FunctionPlotter\FunctionPlotter\obj\Debug\FunctionPlotter.csprojAssemblyReference.cache
+C:\Users\youssef\source\repos\FunctionPlotter\FunctionPlotter\obj\Debug\FunctionPlotter.FunctionPlotter_Form.resources
+C:\Users\youssef\source\repos\FunctionPlotter\FunctionPlotter\obj\Debug\FunctionPlotter.Properties.Resources.resources
+C:\Users\youssef\source\repos\FunctionPlotter\FunctionPlotter\obj\Debug\FunctionPlotter.csproj.GenerateResource.cache
+C:\Users\youssef\source\repos\FunctionPlotter\FunctionPlotter\obj\Debug\FunctionPlotter.csproj.CoreCompileInputs.cache
+C:\Users\youssef\source\repos\FunctionPlotter\FunctionPlotter\bin\Debug\FunctionPlotter.exe.config
+C:\Users\youssef\source\repos\FunctionPlotter\FunctionPlotter\bin\Debug\FunctionPlotter.exe
+C:\Users\youssef\source\repos\FunctionPlotter\FunctionPlotter\bin\Debug\FunctionPlotter.pdb
+C:\Users\youssef\source\repos\FunctionPlotter\FunctionPlotter\obj\Debug\FunctionPlotter.exe
+C:\Users\youssef\source\repos\FunctionPlotter\FunctionPlotter\obj\Debug\FunctionPlotter.pdb

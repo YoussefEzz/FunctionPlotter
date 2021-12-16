@@ -38,11 +38,10 @@
             this.maxtextBox = new System.Windows.Forms.TextBox();
             this.minlabel = new System.Windows.Forms.Label();
             this.maxlabel = new System.Windows.Forms.Label();
-            this.plotnumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.stepslabel = new System.Windows.Forms.Label();
             this.plotchart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            ((System.ComponentModel.ISupportInitialize)(this.plotnumericUpDown)).BeginInit();
+            this.functionpanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.plotchart)).BeginInit();
+            this.functionpanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // functiontextBox
@@ -65,9 +64,9 @@
             // 
             this.Plotbutton.Location = new System.Drawing.Point(332, 170);
             this.Plotbutton.Name = "Plotbutton";
-            this.Plotbutton.Size = new System.Drawing.Size(75, 23);
+            this.Plotbutton.Size = new System.Drawing.Size(113, 35);
             this.Plotbutton.TabIndex = 2;
-            this.Plotbutton.Text = "Parse";
+            this.Plotbutton.Text = "Plot";
             this.Plotbutton.UseVisualStyleBackColor = true;
             this.Plotbutton.Click += new System.EventHandler(this.Plotbutton_Click);
             // 
@@ -77,7 +76,7 @@
             this.mintextBox.Name = "mintextBox";
             this.mintextBox.Size = new System.Drawing.Size(100, 20);
             this.mintextBox.TabIndex = 4;
-            this.mintextBox.Text = "0";
+            this.mintextBox.Text = "-10";
             // 
             // maxtextBox
             // 
@@ -105,32 +104,6 @@
             this.maxlabel.TabIndex = 7;
             this.maxlabel.Text = "max";
             // 
-            // plotnumericUpDown
-            // 
-            this.plotnumericUpDown.Location = new System.Drawing.Point(603, 35);
-            this.plotnumericUpDown.Minimum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.plotnumericUpDown.Name = "plotnumericUpDown";
-            this.plotnumericUpDown.Size = new System.Drawing.Size(120, 20);
-            this.plotnumericUpDown.TabIndex = 8;
-            this.plotnumericUpDown.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            // 
-            // stepslabel
-            // 
-            this.stepslabel.AutoSize = true;
-            this.stepslabel.Location = new System.Drawing.Point(630, 19);
-            this.stepslabel.Name = "stepslabel";
-            this.stepslabel.Size = new System.Drawing.Size(33, 13);
-            this.stepslabel.TabIndex = 9;
-            this.stepslabel.Text = "steps";
-            // 
             // plotchart
             // 
             chartArea1.AxisX.IsMarginVisible = false;
@@ -138,28 +111,39 @@
             chartArea1.AxisY.Title = "y";
             chartArea1.Name = "ChartArea1";
             this.plotchart.ChartAreas.Add(chartArea1);
+            this.plotchart.Dock = System.Windows.Forms.DockStyle.Fill;
             legend1.Name = "function plot";
             legend1.Title = "function";
             this.plotchart.Legends.Add(legend1);
-            this.plotchart.Location = new System.Drawing.Point(14, 212);
+            this.plotchart.Location = new System.Drawing.Point(0, 0);
             this.plotchart.Name = "plotchart";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "function plot";
             series1.Name = "Function Series";
             this.plotchart.Series.Add(series1);
-            this.plotchart.Size = new System.Drawing.Size(774, 226);
+            this.plotchart.Size = new System.Drawing.Size(795, 219);
             this.plotchart.TabIndex = 10;
             this.plotchart.Text = "plotchart";
+            // 
+            // functionpanel
+            // 
+            this.functionpanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.functionpanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.functionpanel.Controls.Add(this.plotchart);
+            this.functionpanel.Location = new System.Drawing.Point(0, 224);
+            this.functionpanel.Name = "functionpanel";
+            this.functionpanel.Size = new System.Drawing.Size(799, 223);
+            this.functionpanel.TabIndex = 11;
             // 
             // FunctionPlotter_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.plotchart);
-            this.Controls.Add(this.stepslabel);
-            this.Controls.Add(this.plotnumericUpDown);
+            this.Controls.Add(this.functionpanel);
             this.Controls.Add(this.maxlabel);
             this.Controls.Add(this.minlabel);
             this.Controls.Add(this.maxtextBox);
@@ -169,8 +153,8 @@
             this.Controls.Add(this.functiontextBox);
             this.Name = "FunctionPlotter_Form";
             this.Text = "Function Plotter";
-            ((System.ComponentModel.ISupportInitialize)(this.plotnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.plotchart)).EndInit();
+            this.functionpanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,9 +169,8 @@
         private System.Windows.Forms.TextBox maxtextBox;
         private System.Windows.Forms.Label minlabel;
         private System.Windows.Forms.Label maxlabel;
-        private System.Windows.Forms.NumericUpDown plotnumericUpDown;
-        private System.Windows.Forms.Label stepslabel;
         private System.Windows.Forms.DataVisualization.Charting.Chart plotchart;
+        private System.Windows.Forms.Panel functionpanel;
     }
 }
 

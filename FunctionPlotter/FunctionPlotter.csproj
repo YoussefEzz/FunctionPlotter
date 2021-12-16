@@ -59,6 +59,7 @@
     <Compile Include="Scanner.cs" />
     <Compile Include="treeNode.cs" />
     <Compile Include="utility.cs" />
+    <Compile Include="Validation.cs" />
     <EmbeddedResource Include="FunctionPlotter_Form.resx">
       <DependentUpon>FunctionPlotter_Form.cs</DependentUpon>
     </EmbeddedResource>
