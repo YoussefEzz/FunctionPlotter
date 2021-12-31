@@ -106,19 +106,46 @@ namespace FunctionPlotter
         /// <returns>int value of the result of muldiv expression</returns>
         int muldivexp()
         {
-            int temp = powerexp();
+            int temp = unaryexp();
             while(m_token.tokenType.Equals(TokenType.Times) || m_token.tokenType.Equals(TokenType.Divide))
             {
                 if(m_token.tokenType.Equals(TokenType.Times))
                 {
                     match(TokenType.Times);
-                    temp *= powerexp();
+                    temp *= unaryexp();
                 }
                 else if(m_token.tokenType.Equals(TokenType.Divide))
                 {
                     match(TokenType.Divide);
-                    temp /= powerexp();
+                    temp /= unaryexp();
                 }
+            }
+            return temp;
+        }
+
+        /// <summary>
+        /// recursive function that represent unary expressions according to rule
+        /// unaryexp -> + powerexp | - powerexp | powerexp
+        /// </summary>
+        /// <returns>int value of the result of unary expression</returns>
+        int unaryexp()
+        {
+            int temp = 0;
+            if (m_token.tokenType.Equals(TokenType.Plus))
+            {
+                match(TokenType.Plus);
+                temp = powerexp();
+
+            }
+            else if (m_token.tokenType.Equals(TokenType.Minus))
+            {
+                match(TokenType.Minus);
+                temp = -1 * powerexp();
+
+            }
+            else
+            {
+                temp = powerexp();
             }
             return temp;
         }
@@ -139,6 +166,8 @@ namespace FunctionPlotter
             
             return temp;
         }
+
+        
 
         /// <summary>
         /// normal expression representing identifier or number or addsub expression within parentheses according to rule
